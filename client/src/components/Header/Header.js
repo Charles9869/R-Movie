@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 import { FiLogOut } from 'react-icons/fi';
 
-// Import all components
+// Import all the components
 
 const Header = () => {
   return (
