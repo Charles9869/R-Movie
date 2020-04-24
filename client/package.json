@@ -4,10 +4,12 @@
   "private": true,
   "proxy": "http://localhost:4000",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.7.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "date-fns": "^2.12.0",
+    "dotenv": "^8.2.0",
     "movie-trailer": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
