@@ -7,6 +7,10 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         font-family: 'Baloo Bhaina 2', sans-serif;
     }
+    p {
+      margin: 0;
+      padding: 0;
+    }
     
 `;
 
