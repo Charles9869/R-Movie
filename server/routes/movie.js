@@ -1,17 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const fetch = require('isomorphic-fetch');
+
 require('dotenv').config({ path: '../.env' });
 
-// GET The most popular movies
-router.get('/popular-movies', (req, res) => {
-  fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&sort_by=popularity.desc`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      res.send({ success: 'true', movies: data });
-    });
-});
+const {
+  getPopularMovies,
+  getMovieSearch,
+  getFilteredMovie,
+  getMovieByGenre,
+  getMovieById,
+  postMovieComment,
+  getCommentsById,
+  getMovieActors,
+  getMovieActor,
+  getMovieFromActor,
+  postMovieVote,
+  getDatabaseMovieByID,
+} = require('./movie-handler');
+
+router.get('/popular-movies', getPopularMovies);
+router.get('/movie', getMovieSearch);
+router.get('/movie/filter', getFilteredMovie);
+router.get('/movies/genre', getMovieByGenre);
+router.get('/movie/:id', getMovieById);
+router.post('/movie/comment', postMovieComment);
+router.get('/movie/comments/:id', getCommentsById);
+router.get('/movie/actors/:id', getMovieActors);
+router.get('/movie/actor/:id', getMovieActor);
+router.get('/actor/:id/movies', getMovieFromActor);
+router.post('/movie/vote', postMovieVote);
+router.get('/movie/database/:id', getDatabaseMovieByID);
 
 module.exports = router;

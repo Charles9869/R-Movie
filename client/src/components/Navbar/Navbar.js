@@ -4,33 +4,28 @@ import { NavLink } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 import { FiLogOut } from 'react-icons/fi';
 import { BsFillBookmarkFill } from 'react-icons/bs';
+import { Avatar } from 'evergreen-ui';
 
 // Authentication
 import { useAuth0 } from '../SignIn/react-auth0-spa';
 
 const Navbar = () => {
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    loginWithPopup,
-    logout,
-    user,
-  } = useAuth0();
+  const { isAuthenticated, loginWithPopup, logout, user } = useAuth0();
 
   return (
     <NavbarWrapper>
       <Nav>
         <LogoWrapper>
-          <Logo href='#'>
+          <Logo to='/'>
             <h1>
-              R<span style={{ color: '#73C8AF' }}>@</span>Movie
+              R<span style={{ color: '#E50914' }}>+</span>Movie
             </h1>
           </Logo>
           {isAuthenticated && (
             <NavbarLink
               exact
               to='/watchlist'
-              activeStyle={{ color: '#73C8AF' }}
+              activeStyle={{ color: '#E50914' }}
             >
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 Watchlist
@@ -42,10 +37,10 @@ const Navbar = () => {
           )}
         </LogoWrapper>
         <LinkContainer>
-          <NavbarLink exact to='/' activeStyle={{ color: '#73C8AF' }}>
+          <NavbarLink exact to='/' activeStyle={{ color: '#E50914' }}>
             Home
           </NavbarLink>
-          <NavbarLink exact to='/chat' activeStyle={{ color: '#73C8AF' }}>
+          <NavbarLink exact to='/chat' activeStyle={{ color: '#E50914' }}>
             Chat
           </NavbarLink>
           {/* Checks if user is not logged in */}
@@ -66,7 +61,7 @@ const Navbar = () => {
                   <FiLogOut style={{ border: 'none', marginLeft: '5px' }} />
                 </IconContainer>
               </AuthButtons>
-              <Avatar src={`${user.picture}`}></Avatar>
+              {user && <Avatar src={`${user.picture}`} size={50} />}
             </React.Fragment>
           )}
         </LinkContainer>
@@ -88,13 +83,16 @@ const Nav = styled.nav`
   width: 80%;
   margin: 0 auto;
   height: 100%;
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const Logo = styled.a`
+const Logo = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
   color: #fff;
@@ -117,7 +115,7 @@ const NavbarLink = styled(NavLink)`
   transition: all 200ms ease-in-out;
   font-size: 18px;
   &:hover {
-    color: #73c8af;
+    color: #e50914;
   }
 `;
 
@@ -130,7 +128,7 @@ const AuthButtons = styled.div`
   font-size: 18px;
   cursor: pointer;
   &:hover {
-    color: #73c8af;
+    color: #e50914;
   }
 `;
 
@@ -138,12 +136,6 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Avatar = styled.img`
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
 `;
 
 export default Navbar;
