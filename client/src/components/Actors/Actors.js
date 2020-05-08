@@ -117,4 +117,5 @@ const PageButton = styled.button`
     color: #e50914;
   }
 `;
+
 export default Actors;

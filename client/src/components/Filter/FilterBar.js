@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
-import { Select, Button } from 'evergreen-ui';
+import { Select, Button, Switch } from 'evergreen-ui';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,7 +19,7 @@ const FilterBar = () => {
   const [yearTo, setYearTo] = React.useState('');
   const [category, setCategory] = React.useState('');
   const [page, setPage] = React.useState(1);
-
+  const [state, setState] = React.useState({ checked: false });
   const dispatch = useDispatch();
 
   const fetchFilteredMovie = () => {
@@ -42,6 +42,17 @@ const FilterBar = () => {
         const { movies } = data;
         dispatch(receiveAllMovieInfo(movies.results));
       });
+  };
+
+  const handleTrending = () => {
+    dispatch(requestAllMovieInfo());
+    fetch('/trending')
+      .then((res) => res.json())
+      .then((data) => {
+        const { movies } = data;
+        dispatch(receiveAllMovieInfo(movies.results));
+      });
+    window.localStorage.setItem('isFiltered', true);
   };
 
   return (
@@ -87,9 +98,13 @@ const FilterBar = () => {
             placeholderText={format(new Date(), 'LL/dd/yyyy')}
           />
         </div>
+        <div>
+          <TredingButton onClick={handleTrending}>Trending</TredingButton>
+        </div>
       </FilterWrapper>
       <FilterButtonsContainer>
         <FilterButton
+          disabled={state.checked}
           appearance='minimal'
           intent='success'
           iconAfter='caret-down'
@@ -97,6 +112,7 @@ const FilterBar = () => {
             fetchFilteredMovie();
             setYearFrom(null);
             setYearTo(null);
+            window.localStorage.setItem('isFiltered', true);
           }}
         >
           Filter
@@ -105,6 +121,7 @@ const FilterBar = () => {
           appearance='minimal'
           onClick={() => {
             resetMovies();
+            window.localStorage.removeItem('isFiltered');
           }}
         >
           Reset
@@ -147,6 +164,11 @@ const FilterButton = styled(Button)`
   &:hover {
     color: #000;
   }
+`;
+
+const TredingButton = styled(Button)`
+  background-color: #1c1c1c;
+  transition: all 200ms ease-in-out;
 `;
 
 const FilterButtonsContainer = styled.div`

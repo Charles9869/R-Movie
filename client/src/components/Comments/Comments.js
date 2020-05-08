@@ -53,7 +53,7 @@ const CommentWrapper = styled.div`
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding: 10px 0px;
 
   p {
     margin: 0;

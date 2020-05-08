@@ -16,6 +16,7 @@ const {
   getMovieFromActor,
   postMovieVote,
   getDatabaseMovieByID,
+  getMovieTrending,
 } = require('./movie-handler');
 
 router.get('/popular-movies', getPopularMovies);
@@ -30,5 +31,6 @@ router.get('/movie/actor/:id', getMovieActor);
 router.get('/actor/:id/movies', getMovieFromActor);
 router.post('/movie/vote', postMovieVote);
 router.get('/movie/database/:id', getDatabaseMovieByID);
+router.get('/trending', getMovieTrending);
 
 module.exports = router;

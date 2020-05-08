@@ -22,6 +22,8 @@ const SearchBar = () => {
         const { movies } = data;
         dispatch(receiveAllMovieInfo(movies.results));
       });
+
+    window.localStorage.setItem('isFiltered', true);
   };
 
   // User can press enter to search a movie

@@ -7,7 +7,7 @@ import { addComment } from '../../actions/actions';
 import Comments from '../Comments';
 
 const CommentBar = ({ id }) => {
-  const { isAuthenticated, loginWithRedirect, user } = useAuth0();
+  const { isAuthenticated, loginWithPopup, user } = useAuth0();
   const [comment, setComment] = React.useState('');
   const dispatch = useDispatch();
 
@@ -62,7 +62,7 @@ const CommentBar = ({ id }) => {
           ) : (
             <React.Fragment>
               <p>You need to be logged in</p>
-              <Button onClick={() => loginWithRedirect({})}>Login</Button>
+              <Button onClick={() => loginWithPopup({})}>Login</Button>
             </React.Fragment>
           )}
         </Container>

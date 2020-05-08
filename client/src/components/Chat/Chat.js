@@ -65,7 +65,12 @@ const Chat = () => {
         </div>
       </Container>
       <InputContainer>
-        <Button style={{ height: '100%' }} onClick={onMessageSubmit}>
+        <Button
+          style={{ height: '100%' }}
+          onClick={onMessageSubmit}
+          disabled={!state.message.length > 0}
+          isValid={!state.message.length > 0}
+        >
           Send
         </Button>
         <input
@@ -74,6 +79,7 @@ const Chat = () => {
           value={state.message}
           placeholder='Enter your message...'
           onKeyPress={handleKeyPress}
+          disabled={!state.name.length > 0}
         />
       </InputContainer>
     </div>
@@ -112,10 +118,10 @@ const Name = styled.h3`
 `;
 
 const Button = styled.button`
-  color: #fff;
-  background-color: #e50914;
+  color: ${(props) => (props.isValid ? '#000' : '#fff')};
+  background-color: ${(props) => (props.isValid ? '#EBEBE4' : '#e50914;')};
+  border: ${(props) => !props.isValid && '1px solid #e50914 '};
   width: 80px;
-  border: 1px solid #e50914;
   border-radius: 5px;
   margin-right: 5px;
   font-size: 18px;

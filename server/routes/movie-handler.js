@@ -233,6 +233,14 @@ const postMovieVote = async (req, res) => {
   res.json({ type: 'successs' });
 };
 
+// GET Returns top movie trending
+const getMovieTrending = (req, res) => {
+  fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.API_KEY}
+  `)
+    .then((res) => res.json())
+    .then((data) => res.json({ type: 'success', movies: data }));
+};
+
 module.exports = {
   getPopularMovies,
   getMovieSearch,
@@ -246,4 +254,5 @@ module.exports = {
   getMovieFromActor,
   postMovieVote,
   getDatabaseMovieByID,
+  getMovieTrending,
 };

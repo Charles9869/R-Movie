@@ -7,8 +7,12 @@ const LoadButton = () => {
   const dispatch = useDispatch();
   return (
     <Wrapper>
-      <Button onClick={() => dispatch(decrementPage())}>Back</Button>
-      <Button onClick={() => dispatch(incrementPage())}>Next</Button>
+      {window.localStorage.getItem('isFiltered') === null && (
+        <React.Fragment>
+          <Button onClick={() => dispatch(decrementPage())}>Back</Button>
+          <Button onClick={() => dispatch(incrementPage())}>Next</Button>
+        </React.Fragment>
+      )}
     </Wrapper>
   );
 };
@@ -16,8 +20,6 @@ const LoadButton = () => {
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  /* margin-bottom: 20px;
-   */
 `;
 
 const Button = styled.button`
