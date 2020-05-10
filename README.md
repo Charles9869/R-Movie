@@ -20,9 +20,9 @@
 - MongoDB
 
 ## RUN LOCALLY
-
+```
 clone using https://github.com/Charles9869/R-Movie.git
-
+```
 ## SCREENSHOTS
 
 ### Homagepage
