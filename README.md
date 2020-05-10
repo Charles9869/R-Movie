@@ -1,6 +1,6 @@
 # R+Movie
 
-#### R+Movie is an application where users can review, comment and search movies. They can search a movie with a search bar or with a filter. Also, a simple chat system was implemented to chat with other users about movies.
+R+Movie is an application where users can review, comment and search movies. They can search a movie with a search bar or with a filter. Also, a simple chat system was implemented to chat with other users about movies.
 
 ## GOALS
 
