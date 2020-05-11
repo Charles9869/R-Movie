@@ -21,17 +21,17 @@ R+Movie is an application where users can review, comment and search movies. The
 
 ## RUN LOCALLY
 ```
-git clone https://github.com/Charles9869/R-Movie.git
+$ git clone https://github.com/Charles9869/R-Movie.git
 ```
 ```
-cd server
-yarn install 
-yarn start
+$ cd server
+$ yarn install 
+$ yarn start
 ```
 ```
-cd client
-yarn install
-yarn start
+$ cd client
+$ yarn install
+$ yarn start
 ```
 ## SCREENSHOTS
 
