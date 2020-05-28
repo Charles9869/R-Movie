@@ -7,7 +7,7 @@ const Footer = () => {
     <FooterWrapper>
       <Container>
         <div style={{ display: 'flex' }}>
-          <a href='https://www.linkedin.com/in/charles-bertrand-105068195/'>
+          <a href='https://www.linkedin.com/in/charlesbertrand98/'>
             <AiFillLinkedin fontSize={30} />
           </a>
           <a href='https://github.com/Charles9869'>
